@@ -1,0 +1,21 @@
+html {
+    background-image: url('../img/fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.card , .box {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.is-info {
+    background-color: #1B396A;
+    color: white;
+}
