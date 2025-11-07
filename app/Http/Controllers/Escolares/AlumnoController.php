@@ -72,4 +72,24 @@ class AlumnoController extends Controller
             return back()->with("Incorrecto", "Error al agregar el alumno " . $e);
         }
     }
+
+    public function actualizarAlumno(Request $request, $user_id)
+{
+    $alumno = Alumno::where('user_id', $user_id)->firstOrFail(); // Busca por user_id
+    
+    $alumno->update($request->only([
+        'numero_de_control',
+        'nombre',
+        'ap_paterno',
+        'ap_materno',
+        'curp',
+        'semestre',
+        'plan_estudio_id',
+        'estatus_alumno_id',
+        'tipo_alumno_id',
+    ]));
+
+    return redirect()->back()->with('success', 'Alumno actualizado correctamente.');
+}
+
 }
