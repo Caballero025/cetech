@@ -13,8 +13,7 @@ Route::get('/',[HomeController::class,'index']);
 
 Route::group(['middleware'=> ['role:escolares']],function(){ 
     Route::get('/alumnos',[AlumnoController::class,'index'])->name('Alumnos');
-
-  
+    Route::post('/alumnos/new',[AlumnoController::class,'crearAlumno'])->name('AlumnoCrear');
 
 });
 
