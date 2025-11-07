@@ -19,6 +19,9 @@
             <a href="{{ route('home') }}" class="button is-danger">
                 <i class="fa-solid fa-arrow-left"></i>&nbsp;Regresar
             </a>
+              <a class="button is-success js-modal-trigger" data-target="modal-nvo-alumno">
+              <i class="fa-solid fa-plus"></i>&nbsp;Nuevo Alumno
+            </a>
         
         </div>
         <table class="table is-striped is-narrow is-hoverable is-fullwidth">
@@ -58,7 +61,122 @@
 
         </table>
 
-       
+{{-- Modal para agregar un Alumno --}}
+        <div id="modal-nvo-alumno" class="modal">
+            <div class="modal-background"></div>
+
+            <div class="modal-content">
+                <div class="box">
+                    <p class="title is-5 has-text-centered">Agregar Alumno</p>
+                    <form method="POST" action="{{route('AlumnoCrear')}}">
+                        @csrf
+                        @method('POST')
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">Número de Control:</label>
+                                <div class="control">
+                                    <input class="input" type="text" name = "txtNoControl" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">Nombre:</label>
+                                <div class="control">
+                                    <input class="input" type="text" name = "txtNombre" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">Apellido Paterno:</label>
+                                <div class="control">
+                                    <input class="input" type="text" name = "txtApPaterno" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">Apellido Materno:</label>
+                                <div class="control">
+                                    <input class="input" type="text" name = "txtApMaterno" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">CURP:</label>
+                                <div class="control">
+                                    <input class="input" type="text" name = "txtCURP" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">Semestre:</label>
+                                <div class="control">
+                                    <input class="input" type="text" name = "txtSemestre" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">Plan de estudios:</label>
+                                <div class="control">
+                                    <div class="select" >
+                                        <select name='txtPlan'>
+                                            <option>Seleccionar carrera</option>
+                                            @foreach ($planesEstudio as $plan)
+                                                <option value="{{$plan->id}}">{{ $plan->carrera }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">Estatus:</label>
+                                <div class="control">
+                                    <div class="select" >
+                                        <select name='txtEstatus'>
+                                            <option>Seleccionar estatus</option>
+                                            @foreach ($estatusAlumnos as $estatusAlumno)
+                                                <option value="{{$estatusAlumno->id}}">{{ $estatusAlumno->nombre_estatus }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">Tipo de Alumno:</label>
+                                <div class="control">
+                                    <div class="select" >
+                                        <select name='txtTipoAlumno'>
+                                            <option>Seleccionar tipo</option>
+                                            @foreach ($tiposAlumnos as $tipo)
+                                                <option value="{{$tipo->id}}">{{ $tipo->nombre_tipo }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="has-text-centered">
+                            <button class="button is-primary" type="submit"><i
+                                    class="fa-solid fa-floppy-disk"></i>&nbsp;Guardar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+
 
     </div>
 
