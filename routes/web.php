@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Escolares\MateriaController;
 use App\Http\Controllers\Escolares\PlanEstudioController;
+use App\Http\Controllers\Escolares\AlumnoController;
 
 Auth::routes();
 
@@ -11,8 +12,7 @@ Route::get('/home',[HomeController::class,'index'])->name('home');
 Route::get('/',[HomeController::class,'index']);
 
 Route::group(['middleware'=> ['role:escolares']],function(){ 
-    
-
+    Route::get('/alumnos',[AlumnoController::class,'index'])->name('Alumnos');
 
   
 
