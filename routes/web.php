@@ -6,6 +6,8 @@ use App\Http\Controllers\Escolares\MateriaController;
 use App\Http\Controllers\Escolares\PlanEstudioController;
 use App\Http\Controllers\Escolares\AlumnoController;
 use App\Http\Controllers\Escolares\DocenteController;
+use App\Http\Controllers\Escolares\PeriodoController;
+
 
 Auth::routes();
 
@@ -23,6 +25,9 @@ Route::group(['middleware'=> ['role:escolares']],function(){
     Route::post('/docentes/new',[DocenteController::class,'crearDocente'])->name('DocentesCrear');
     Route::patch('/docentes/editar/{user_id}', [DocenteController::class, 'editarDocente'])->name('DocenteEditar');
     Route::delete('/docentes/{user_id}', [DocenteController::class, 'eliminarDocente'])->name('DocenteEliminar');
+
+    #Rutas de periodos
+    Route::get('/periodos',[PeriodoController::class,'index'])->name('Periodos');
 
 
 });
