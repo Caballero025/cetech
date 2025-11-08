@@ -28,6 +28,7 @@ Route::group(['middleware'=> ['role:escolares']],function(){
 
     #Rutas de periodos
     Route::get('/periodos',[PeriodoController::class,'index'])->name('Periodos');
+    Route::post('/periodos/new',[PeriodoController::class,'createPeriodo'])->name('PeriodosCrear');
 
 
 });
