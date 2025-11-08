@@ -11,7 +11,7 @@ class PeriodoController extends Controller
     public function index(){
         $periodos = Periodo::all();
 
-        return view('escolares.periodos', compact('periodos'));
+        return view('Escolares.periodos', compact('periodos'));
     }
 
     public function createPeriodo(Request $request){
