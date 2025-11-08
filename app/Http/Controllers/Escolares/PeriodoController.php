@@ -38,13 +38,6 @@ class PeriodoController extends Controller
         return back()->with("Correcto","Periodo agregado Correctamente");
     }
 
-    public function deletePeriodo($id){
-        $periodo = Periodo::findOrFail($id);
-        $periodo->delete();
-
-        return back()->with("Correcto","Periodo eliminado Correctamente");
-    
-    }
 
     public function editarPeriodo(Request $request, $id)
 {
@@ -74,5 +67,22 @@ class PeriodoController extends Controller
     ]);
 
     return back()->with("Correcto", "Periodo actualizado correctamente");
+}
+    
+public function deletePeriodo($id){
+    try {
+        // Buscar el alumno usando user_id
+        $periodo = Periodo::findOrFail($id);
+
+        // Eliminar el alumno
+        $periodo->delete();
+
+
+        return back()->with('Correcto', 'Periodo eliminado correctamente');
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return back()->with('Incorrecto', 'Periodo no encontrado');
+    } catch (\Exception $e) {
+        return back()->with('Incorrecto', 'Error al eliminar: ' . $e->getMessage());
+    }
 }
 }

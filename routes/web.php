@@ -30,6 +30,8 @@ Route::group(['middleware'=> ['role:escolares']],function(){
     Route::get('/periodos',[PeriodoController::class,'index'])->name('Periodos');
     Route::post('/periodos/new',[PeriodoController::class,'createPeriodo'])->name('PeriodosCrear');
     Route::patch('/periodos/editar/{id}', [PeriodoController::class, 'editarPeriodo'])->name('PeriodosEditar');
+    Route::delete('/periodos/delete/{id}',[PeriodoController::class,'deletePeriodo'])->name('PeriodosEliminar'); 
+
     
         #Route::patch('/planes-de-estudio/update/{id}',[PlanEstudioController::class,'actualizarPlanEstudio'])->name('PlanesEstudioActualizar');
 

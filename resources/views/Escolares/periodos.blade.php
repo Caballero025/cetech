@@ -41,14 +41,14 @@
                                 <button class="button is-warning js-modal-trigger" data-target="modal-{{ $periodo->id }}">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                               {{--<form action="{{ route('PeriodosEliminar', $periodo->id) }}" method="POST">
+                               <form action="{{ route('PeriodosEliminar', $periodo->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="button is-danger"
                                         onclick="return confirm('¿Estás seguro de que quieres eliminar este registro?')">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
-                                </form>--}}
+                                </form>
                             </div>
 
                             <div id="modal-{{ $periodo->id }}" class="modal">
