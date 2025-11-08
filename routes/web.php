@@ -15,6 +15,7 @@ Route::group(['middleware'=> ['role:escolares']],function(){
     Route::get('/alumnos',[AlumnoController::class,'index'])->name('Alumnos');
     Route::post('/alumnos/new',[AlumnoController::class,'crearAlumno'])->name('AlumnoCrear');  
     Route::patch('/alumnos/update/{user_id}', [AlumnoController::class, 'actualizarAlumno'])->name('AlumnoActualizar');
+    Route::delete('/alumnos/{user_id}', [AlumnoController::class, 'eliminarAlumno'])->name('AlumnoEliminar');
 });
 
 Route::group(['middleware'=> ['role:division']],function(){ 

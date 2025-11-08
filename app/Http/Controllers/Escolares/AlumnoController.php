@@ -92,4 +92,26 @@ class AlumnoController extends Controller
     return redirect()->back()->with('success', 'Alumno actualizado correctamente.');
 }
 
+public function eliminarAlumno($user_id){
+    try {
+        // Buscar el alumno usando user_id
+        $alumno = Alumno::where('user_id', $user_id)->firstOrFail();
+
+        // Eliminar el alumno
+        $alumno->delete();
+
+        // Eliminar el usuario asociado
+        $usuario = User::find($user_id);
+        if($usuario){
+            $usuario->delete();
+        }
+
+        return back()->with('Correcto', 'Alumno y usuario eliminados correctamente');
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return back()->with('Incorrecto', 'Alumno no encontrado');
+    } catch (\Exception $e) {
+        return back()->with('Incorrecto', 'Error al eliminar: ' . $e->getMessage());
+    }
+}
+
 }
