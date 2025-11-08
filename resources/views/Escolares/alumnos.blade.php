@@ -52,8 +52,7 @@
                         <td>{{$alumno->tipo_alumno_id}}</td>
                         <td>
                             <div class="field is-grouped">
-                                <form action=""
-                                    method="POST">
+                                <<form method="POST" action="{{ route('AlumnoEliminar', $alumno->user_id) }}">>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="button is-danger"
