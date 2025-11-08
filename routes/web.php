@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Escolares\MateriaController;
 use App\Http\Controllers\Escolares\PlanEstudioController;
 use App\Http\Controllers\Escolares\AlumnoController;
+use App\Http\Controllers\Escolares\DocenteController;
 
 Auth::routes();
 
@@ -16,6 +17,9 @@ Route::group(['middleware'=> ['role:escolares']],function(){
     Route::post('/alumnos/new',[AlumnoController::class,'crearAlumno'])->name('AlumnoCrear');  
     Route::patch('/alumnos/update/{user_id}', [AlumnoController::class, 'actualizarAlumno'])->name('AlumnoActualizar');
     Route::delete('/alumnos/{user_id}', [AlumnoController::class, 'eliminarAlumno'])->name('AlumnoEliminar');
+
+    #Rutas de docentes
+    Route::get('/docentes',[DocenteController::class,'index'])->name('Docentes');
 });
 
 Route::group(['middleware'=> ['role:division']],function(){ 
