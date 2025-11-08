@@ -44,7 +44,82 @@
                         <td class="is-hidden-mobile is-hidden-tablet">{{ $item->curp }}</td>
                         <td class="is-hidden-mobile">{{ $item->email }}</td>
                         <td>
+                            <div class="field is-grouped">
+                                <button class="button is-warning js-modal-trigger" data-target="modal-{{ $item->user_id }}">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <form action="{{ route('DocenteEliminar', $item->user_id) }}" method="POST">
+                                    @csrf 
+                                    @method('DELETE')
+                                    <button type="submit" class="button is-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este registro?')">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form> 
+                            </div>
                             
+                            <div id="modal-{{ $item->user_id }}" class="modal">
+                                <div class="modal-background"></div>
+
+                                <div class="modal-content">
+                                    <div class="box">
+                                        <p class="title is-5 has-text-centered">Modificar Docente</p>
+                                        <form method="POST" action=" {{ route('DocenteEditar', $item->user_id) }}">
+                                            @csrf
+                                            @method('PATCH')
+                                            <div class="field">
+                                                <label class="label">RFC:</label>
+                                                <div class="control">
+                                                    <input class="input" type="text"
+                                                        value="{{ $item->rfc }}" name = "txtRFC">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Nombre:</label>
+                                                <div class="control">
+                                                    <input class="input" type="text" value="{{ $item->nombre }}"
+                                                        name = "txtNombre">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Apellido Paterno:</label>
+                                                <div class="control">
+                                                    <input class="input" type="text" value="{{ $item->ap_paterno }}"
+                                                        name = "txtApPaterno">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Apellido Materno:</label>
+                                                <div class="control">
+                                                    <input class="input" type="text" value="{{ $item->ap_materno }}"
+                                                        name = "txtApMaterno">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">CURP:</label>
+                                                <div class="control">
+                                                    <input class="input" type="text" value="{{ $item->curp }}"
+                                                        name = "txtCURP">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">E-Mail:</label>
+                                                <div class="control">
+                                                    <input class="input" type="text" value="{{ $item->email }}"
+                                                        name = "txtEmail">
+                                                </div>
+                                            </div>
+
+                                            <div class="has-text-centered">
+                                                <button class="button is-primary" type="submit"><i
+                                                        class="fa-solid fa-floppy-disk"></i>&nbsp;Guardar</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <button class="modal-close is-large" aria-label="close"></button>
+                            </div>
+
 
                         </td>
                     </tr>
