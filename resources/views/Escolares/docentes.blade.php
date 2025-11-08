@@ -5,7 +5,8 @@
     <div class="box ">
         <div class="buttons">
             <a href="{{ route('home') }}" class="button is-danger"><i class="fa-solid fa-arrow-left"></i>&nbsp;Regresar</a>
-            
+            <a class="button is-primary js-modal-trigger" data-target="modal-nvo-docente"><i
+                    class="fa-solid fa-plus"></i>&nbsp;Nuevo Docente</a>
         </div>
         @if (session('Correcto'))
             <div class="notification is-success">
@@ -50,6 +51,105 @@
                 @endforeach
             </tbody>
         </table>
+  {{-- Modal para agregar un Docente --}}
+        <div id="modal-nvo-docente" class="modal">
+            <div class="modal-background"></div>
 
+            <div class="modal-content">
+                <div class="box">
+                    <p class="title is-5 has-text-centered">Agregar Docente</p>
+                    <form method="POST" action="{{ route('DocentesCrear') }}">
+                        @csrf
+                        @method('POST')
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">RFC:</label>
+                                <div class="control">
+                                    <input class="input" type="text" name = "txtRFC" value="{{ old('txtRFC') }}">
+                                </div>
+                            </div>
+                            @error('txtRFC')
+                                <p class="help is-danger">Ingresa el RFC</p>
+                            @enderror
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">Nombre:</label>
+                                <div class="control">
+                                    <input class="input" type="text" name = "txtNombre" value="{{ old('txtNombre') }}">
+                                </div>
+                            </div>
+                            @error('txtNombre')
+                                <p class="help is-danger">Ingresa el nombre</p>
+                            @enderror
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">Apellido Paterno:</label>
+                                <div class="control">
+                                    <input class="input" type="text" name = "txtApPaterno" value="{{ old('txtApPaterno') }}">
+                                </div>
+                            </div>
+                            @error('txtApPaterno')
+                                <p class="help is-danger">Ingresa el apellido paterno</p>
+                            @enderror
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">Apellido Materno:</label>
+                                <div class="control">
+                                    <input class="input" type="text" name = "txtApMaterno" value="{{ old('txtApMaterno') }}">
+                                </div>
+                            </div>
+                            @error('txtApMaterno')
+                                <p class="help is-danger">Ingresa el apellido materno</p>
+                            @enderror
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">CURP:</label>
+                                <div class="control">
+                                    <input class="input" type="text" name = "txtCURP" value="{{ old('txtCURP') }}">
+                                </div>
+                            </div>
+                            @error('txtCURP')
+                                <p class="help is-danger">Ingresa la CURP</p>
+                            @enderror
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <label class="label">E-Mail:</label>
+                                <div class="control">
+                                    <input class="input" type="email" name = "txtEmail" value="{{ old('txtEmail') }}">
+                                </div>
+                            </div>
+                            @error('txtEmail')
+                                <p class="help is-danger">Ingresa el email</p>
+                            @enderror
+                        </div>
+                        
+
+                        <div class="has-text-centered">
+                            <button class="button is-primary" type="submit"><i
+                                    class="fa-solid fa-floppy-disk"></i>&nbsp;Guardar</a>
+                        </div>
+                    </form>
+                    <!-- Your content -->
+                </div>
+            </div>
+
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+
+
+
+
+    </div>
+
+    @if ($errors->has('txtRFC') || $errors->has('txtNombre') || $errors->has('txtApPaterno') || $errors->has('txtApMaterno') || $errors->has('txtCURP') || $errors->has('txtEmail')  )
+        <script>
+            document.getElementById('modal-nvo-docente').classList.add('is-active');
+        </script>
+    @endif
     
 @endsection
