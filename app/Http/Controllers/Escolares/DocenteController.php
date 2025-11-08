@@ -88,6 +88,7 @@ class DocenteController extends Controller
         return back()->with('Incorrecto', 'Error al actualizar docente: ' . $e->getMessage());
     }
 }
+
 public function eliminarDocente($user_id){
     try {
         // Buscar el alumno usando user_id
@@ -109,5 +110,6 @@ public function eliminarDocente($user_id){
         return back()->with('Incorrecto', 'Error al eliminar: ' . $e->getMessage());
     }
 }
+
 
 }
