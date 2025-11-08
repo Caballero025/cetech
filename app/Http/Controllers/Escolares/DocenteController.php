@@ -89,4 +89,27 @@ class DocenteController extends Controller
     }
 }
 
+public function eliminarDocente($user_id){
+    try {
+        // Buscar el alumno usando user_id
+        $docente = Docente::where('user_id', $user_id)->firstOrFail();
+
+        // Eliminar el alumno
+        $docente->delete();
+
+        // Eliminar el usuario asociado
+        $usuario = User::find($user_id);
+        if($usuario){
+            $usuario->delete();
+        }
+
+        return back()->with('Correcto', 'Docente y usuario eliminados correctamente');
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        return back()->with('Incorrecto', 'Docente no encontrado');
+    } catch (\Exception $e) {
+        return back()->with('Incorrecto', 'Error al eliminar: ' . $e->getMessage());
+    }
+}
+
+
 }

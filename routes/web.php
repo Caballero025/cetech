@@ -22,6 +22,8 @@ Route::group(['middleware'=> ['role:escolares']],function(){
     Route::get('/docentes',[DocenteController::class,'index'])->name('Docentes');
     Route::post('/docentes/new',[DocenteController::class,'crearDocente'])->name('DocentesCrear');
     Route::patch('/docentes/editar/{user_id}', [DocenteController::class, 'editarDocente'])->name('DocenteEditar');
+    Route::delete('/docentes/{user_id}', [DocenteController::class, 'eliminarDocente'])->name('DocenteEliminar');
+
 
 });
 
