@@ -14,5 +14,12 @@
         <a class="button is-info" href="{{ route('Docentes') }}"><i class="fa-solid fa-arrow-right"></i>&nbsp;Acceder</a>
     </div>
 </div>
+<div class="column is-4-desktop is-6-mobile">
+    <div class="box">
+        <h5 class="title is-5"><i class="fa-solid fa-building"></i> Periodos</h5>
+        <p class="subtitle is-6">Gestión de periodos escolares</p>
+        <a class="button is-info" href="{{ route('Periodos') }}"><i class="fa-solid fa-arrow-right"></i>&nbsp;Acceder</a>
+    </div>
+</div>
 
 @endhasrole
