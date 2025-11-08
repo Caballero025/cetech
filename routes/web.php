@@ -20,6 +20,7 @@ Route::group(['middleware'=> ['role:escolares']],function(){
 
     #Rutas de docentes
     Route::get('/docentes',[DocenteController::class,'index'])->name('Docentes');
+    Route::post('/docentes/new',[DocenteController::class,'crearDocente'])->name('DocentesCrear');
 });
 
 Route::group(['middleware'=> ['role:division']],function(){ 
