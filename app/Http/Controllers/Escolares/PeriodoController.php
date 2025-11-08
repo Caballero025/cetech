@@ -45,4 +45,34 @@ class PeriodoController extends Controller
         return back()->with("Correcto","Periodo eliminado Correctamente");
     
     }
+
+    public function editarPeriodo(Request $request, $id)
+{
+    // Buscar el periodo por ID
+    $periodo = Periodo::findOrFail($id);
+
+    // Determinar el nombre del periodo
+    $nombrePeriodo = "";
+
+    if ($request->txtPeriodo == '1') {
+        $nombrePeriodo = 'Enero - Junio';
+    }
+
+    if ($request->txtPeriodo == '2') {
+        $nombrePeriodo = 'Agosto - Diciembre';
+    }
+
+    if ($request->txtPeriodo == 'V') {
+        $nombrePeriodo = 'Verano';
+    }
+
+    // Actualizar los datos
+    $periodo->update([
+        'clave_periodo' => $request->txtAnio . '-' . $request->txtPeriodo,
+        'nombre_periodo' => $nombrePeriodo,
+        'estatus' => $request->txtEstatus
+    ]);
+
+    return back()->with("Correcto", "Periodo actualizado correctamente");
+}
 }
