@@ -41,7 +41,6 @@ Route::group(['middleware'=> ['role:escolares']],function(){
 
 Route::group(['middleware'=> ['role:division']],function(){ 
  
-
-     
+    Route::get('/materias',[MateriaController::class,'index'])->name('Materias');
 
 });
