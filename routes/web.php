@@ -43,5 +43,7 @@ Route::group(['middleware'=> ['role:division']],function(){
  
     Route::get('/materias',[MateriaController::class,'index'])->name('Materias');
     Route::post('/materias/new',[MateriaController::class,'crearMateria'])->name('MateriasCrear');
+    Route::patch('/materias/{id}',[MateriaController::class,'actuaMateria'])->name('MateriasActualizar');
+
 
 });

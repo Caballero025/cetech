@@ -31,15 +31,71 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($materias as $materia)
-                <tr>
-                    <td>{{ $materia->clave_materia }}</td>
-                    <td>{{ $materia->nombre }}</td>
-                    <td>{{ $materia->creditos }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+           @foreach ($materias as $materia)
+                    <tr>
+                        <td>{{ $materia->clave_materia }}</td>
+                        <td>{{ $materia->nombre }}</td>
+                        <td>{{ $materia->creditos }}</td>
+                        <td>
+                            <div class="field is-grouped">
+                                <button class="button is-warning js-modal-trigger" data-target="modal-{{ $materia->id }}">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                             
+                            </div>
+                            
+                            <div id="modal-{{ $materia->id }}" class="modal">
+                                <div class="modal-background"></div>
+
+                                <div class="modal-content">
+                                    <div class="box">
+                                        <p class="title is-5 has-text-centered">Modificar Materia</p>
+                                        <form method="POST" action="{{ route('MateriasActualizar', $materia->id) }}">
+                                            @csrf
+                                            @method('PATCH')
+                                            <div class="field">
+                                                <div class="control">
+                                                    <label class="label">Clave:</label>
+                                                    <div class="control">
+                                                        <input class="input" type="text" name = "txtClave" value="{{ $materia->clave_materia }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="control">
+                                                    <label class="label">Nombre de la materia:</label>
+                                                    <div class="control">
+                                                        <input class="input" type="text" name = "txtNombre" value="{{ $materia->nombre}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="control">
+                                                    <label class="label">Créditos:</label>
+                                                    <div class="control">
+                                                        <input class="input" type="text" name = "txtCreditos" value="{{ $materia->creditos }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
+                                            <div class="has-text-centered">
+                                                <button class="button is-primary" type="submit"><i
+                                                        class="fa-solid fa-floppy-disk"></i>&nbsp;Guardar</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <button class="modal-close is-large" aria-label="close"></button>
+                            </div>
+
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
 {{-- Modal para agregar una Materia --}}
         <div id="modal-nvo-materia" class="modal">
             <div class="modal-background"></div>
