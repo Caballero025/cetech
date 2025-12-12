@@ -16,7 +16,7 @@ echo "Generando archivo .env..."
 cat > .env << EOF
 APP_NAME="CETech"
 APP_ENV=production
-APP_KEY=${APP_KEY}
+APP_KEY="${APP_KEY}"
 APP_DEBUG=true
 APP_URL=http://localhost:8000
 
