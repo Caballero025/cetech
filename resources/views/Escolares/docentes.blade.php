@@ -1,7 +1,7 @@
 @extends('layouts.base')
 @section('content')
 
-<h3 class="title is-3 has-text-centered">Sistema Integral de Información kubernetes</h3>
+<h3 class="title is-3 has-text-centered">Sistema Integral de Información kubernetes 2</h3>
     <div class="box ">
         <div class="buttons">
             <a href="{{ route('home') }}" class="button is-danger"><i class="fa-solid fa-arrow-left"></i>&nbsp;Regresar</a>
