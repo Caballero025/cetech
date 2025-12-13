@@ -7,7 +7,7 @@
     <div class="buttons">
             <a href="{{ route('home') }}" class="button is-danger"><i class="fa-solid fa-arrow-left"></i>&nbsp;Regresar</a>
             <a class="button is-primary js-modal-trigger" data-target="modal-nvo-materia"><i
-                    class="fa-solid fa-plus"></i>&nbsp;Nuevo Materia</a>
+                    class="fa-solid fa-plus"></i>&nbsp;Nuevo</a>
         </div>
         @if (session('Correcto'))
             <div class="notification is-success">
